@@ -1,0 +1,33 @@
+<div class="app-container">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h1>Window Counter</h1>
+      <div class="visibility-status">
+        <span [style.color]="(isTabVisible$ | async) ? 'green' : 'red'">
+          {{ (isTabVisible$ | async) ? '👁️ Visible' : '🙈 Hidden' }}
+        </span>
+      </div>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a routerLink="/clients" routerLinkActive="active">Clients</a></li>
+      <li><a routerLink="/map" routerLinkActive="active">Map</a></li>
+      <li><a routerLink="/location" routerLinkActive="active">Locations</a></li>
+    </ul>
+    
+    <div class="nav-actions">
+      <button (click)="getRestState()" class="btn btn-outline">Get State</button>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <div class="debug-info" *ngIf="serverStateFromRest">
+    <details>
+      <summary>Debug: Latest REST State</summary>
+      <pre>{{ serverStateFromRest | json }}</pre>
+    </details>
+  </div>
+</div>

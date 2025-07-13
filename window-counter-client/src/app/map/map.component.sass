@@ -1,0 +1,177 @@
+.map-container
+  padding: 20px
+  max-width: 1200px
+  margin: 0 auto
+
+h2
+  color: #333
+  margin-bottom: 20px
+
+.controls
+  margin-bottom: 20px
+
+.btn
+  padding: 10px 20px
+  border: none
+  border-radius: 4px
+  cursor: pointer
+  font-size: 14px
+  
+.btn-primary
+  background-color: #007bff
+  color: white
+  
+  &:hover
+    background-color: #0056b3
+
+.btn-warning
+  background-color: #ffc107
+  color: #212529
+  margin-left: 10px
+  
+  &:hover
+    background-color: #e0a800
+
+.map-content
+  display: grid
+  grid-template-columns: 2fr 1fr
+  gap: 20px
+  min-height: 500px
+
+// Esri Map Container
+.esri-map-container
+  background-color: #f8f9fa
+  border-radius: 8px
+  overflow: hidden
+  border: 1px solid #dee2e6
+
+.esri-map
+  width: 100%
+  height: 500px
+
+// Client Sidebar
+.client-sidebar
+  background-color: #f8f9fa
+  border-radius: 8px
+  padding: 20px
+  
+h3
+  color: #333
+  margin-bottom: 15px
+  font-size: 18px
+
+.client-list
+  margin-bottom: 20px
+  max-height: 300px
+  overflow-y: auto
+
+.client-item
+  background-color: white
+  border-radius: 6px
+  padding: 12px
+  margin-bottom: 8px
+  display: flex
+  align-items: center
+  cursor: pointer
+  transition: all 0.2s ease
+  border: 2px solid transparent
+  
+  &:hover
+    background-color: #f1f3f4
+    
+  &.selected
+    border-color: #007bff
+    background-color: #e3f2fd
+
+.client-status
+  width: 12px
+  height: 12px
+  border-radius: 50%
+  margin-right: 12px
+  border: 2px solid white
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2)
+
+.client-details
+  flex: 1
+  
+.client-id
+  font-weight: 600
+  margin: 0 0 4px 0
+  font-size: 14px
+  color: #333
+
+.client-status-text
+  margin: 0
+  font-size: 12px
+  color: #666
+
+.map-legend
+  background-color: rgba(255,255,255,0.9)
+  padding: 12px
+  border-radius: 6px
+  border: 1px solid #dee2e6
+
+.legend-item
+  display: flex
+  align-items: center
+  margin-bottom: 8px
+  
+  &:last-child
+    margin-bottom: 0
+  
+  span
+    font-size: 13px
+    color: #333
+
+.legend-color
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  margin-right: 8px
+  border: 1px solid white
+  
+  &.visible
+    background-color: #28a745
+    
+  &.hidden
+    background-color: #dc3545
+
+.client-info
+  background-color: white
+  border: 1px solid #ddd
+  border-radius: 8px
+  padding: 20px
+  
+  h3
+    margin-top: 0
+    color: #333
+
+.info-card
+  p
+    margin: 10px 0
+    font-size: 14px
+    color: #666
+    
+    strong
+      color: #333
+
+.status-visible
+  color: #28a745
+  font-weight: bold
+  
+.status-hidden
+  color: #dc3545
+  font-weight: bold
+
+.no-clients
+  text-align: center
+  padding: 40px
+  color: #666
+  font-style: italic
+
+@media (max-width: 768px)
+  .map-content
+    grid-template-columns: 1fr
+    
+  .map-area
+    height: 300px

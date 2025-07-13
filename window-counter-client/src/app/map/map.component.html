@@ -1,0 +1,59 @@
+<div class="map-container">
+  <h2>Client Locations Map</h2>
+  
+  <div class="controls">
+    <button (click)="refreshMap()" class="btn btn-primary">Refresh Map</button>
+    <button (click)="cleanMap()" class="btn btn-warning">Clean Map</button>
+  </div>
+
+  <div class="map-content">
+    <div class="esri-map-container">
+      <div #mapViewNode class="esri-map"></div>
+    </div>
+    
+    <div class="client-sidebar">
+      <h3>Connected Clients</h3>
+      <div class="client-list">
+        <div class="client-item" 
+             *ngFor="let client of clients"
+             [class.selected]="selectedClient?.clientId === client.clientId"
+             (click)="selectClient(client)">
+          <div class="client-status" [style.background-color]="getClientColor(client)"></div>
+          <div class="client-details">
+            <p class="client-id">{{ client.clientId.slice(-8) }}</p>
+            <p class="client-status-text">{{ client.isVisible ? 'Visible' : 'Hidden' }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="map-legend">
+        <div class="legend-item">
+          <div class="legend-color visible"></div>
+          <span>Visible Clients</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color hidden"></div>
+          <span>Hidden Clients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="client-info" *ngIf="selectedClient">
+    <h3>Selected Client</h3>
+    <div class="info-card">
+      <p><strong>Client ID:</strong> {{ selectedClient.clientId }}</p>
+      <p><strong>Tab ID:</strong> {{ selectedClient.tabId }}</p>
+      <p><strong>Status:</strong> 
+        <span [class]="selectedClient.isVisible ? 'status-visible' : 'status-hidden'">
+          {{ selectedClient.isVisible ? 'VISIBLE' : 'HIDDEN' }}
+        </span>
+      </p>
+      <p><strong>Last Updated:</strong> {{ selectedClient.lastUpdated | date:'medium' }}</p>
+      <p><strong>Last Visibility Change:</strong> {{ selectedClient.lastVisibilityChange | date:'medium' }}</p>
+    </div>
+  </div>
+  
+  <div class="no-clients" *ngIf="clients.length === 0">
+    <p>No clients to display on map</p>
+  </div>
+</div>

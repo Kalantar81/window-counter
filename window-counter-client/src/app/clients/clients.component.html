@@ -1,0 +1,35 @@
+<div class="clients-container">
+  <h2>Connected Clients</h2>
+  
+  <div class="controls">
+    <button (click)="refreshClients()" class="btn btn-primary">Refresh Clients</button>
+  </div>
+
+  <div class="clients-list" *ngIf="clients.length > 0; else noClients">
+    <div class="client-card" *ngFor="let client of clients" [class.visible]="client.isVisible">
+      <div class="client-header">
+        <h3>{{ client.clientId }}</h3>
+        <span class="visibility-badge" [class.visible]="client.isVisible">
+          {{ client.isVisible ? 'VISIBLE' : 'HIDDEN' }}
+        </span>
+      </div>
+      
+      <div class="client-details">
+        <p><strong>Tab ID:</strong> {{ client.tabId }}</p>
+        <p><strong>Last Updated:</strong> {{ client.lastUpdated | date:'medium' }}</p>
+        <p><strong>Last Visibility Change:</strong> {{ client.lastVisibilityChange | date:'medium' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noClients>
+    <div class="no-clients">
+      <p>No clients connected</p>
+    </div>
+  </ng-template>
+
+  <div class="real-time-updates" *ngIf="serverState.length > 0">
+    <h3>Real-time Updates</h3>
+    <pre>{{ serverState | json }}</pre>
+  </div>
+</div>
