@@ -73,7 +73,7 @@ typings/
 dist
 
 # Gatsby files
-.cache/
+.cache/  
 public
 
 # Vuepress build output
